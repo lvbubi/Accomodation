@@ -1,10 +1,10 @@
 import numpy as np
-# import the modules
 import pandas as pd
 import pymongo
+import repository.settings as settings
 
 def loadTable():
-    client = pymongo.MongoClient("mongodb://localhost:27017/")
+    client = pymongo.MongoClient(settings.DATABASE_URI)
     #db = client.datascience
     #collection = db.accomodation
 
@@ -21,7 +21,7 @@ def loadTable():
     return dataFrame
 
 def loadCoordinates():
-    client = pymongo.MongoClient("mongodb://localhost:27017/")
+    client = pymongo.MongoClient(settings.DATABASE_URI)
 
     collection = client.local.coordinates
 

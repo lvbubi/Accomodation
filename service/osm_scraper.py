@@ -14,7 +14,6 @@ def scrape_page(counties):
 
     print(f"Accessing page at {settings.OSM_URL} ...")
     DRIVER.get(settings.OSM_URL)
-    print("Done!")
     sidebar = DRIVER.find_element_by_css_selector('#sidebar')
     query = sidebar.find_element_by_css_selector('input#query')
     search = sidebar.find_element_by_name('commit')
@@ -31,4 +30,5 @@ def scrape_page(counties):
                             "longitude": result.get_attribute('data-lat'),
                             "latitude": result.get_attribute('data-lon')
                             })
-    print(coordinates)
+    print('DONE')
+    return coordinates
