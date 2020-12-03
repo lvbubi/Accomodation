@@ -1,20 +1,20 @@
 from selenium import webdriver
-from webdriver_manager.chrome import ChromeDriverManager
-from selenium.webdriver.chrome.options import Options
-import service.settings as settings
+import webdriver_manager.chrome
+import selenium.webdriver.chrome.options
+import service.settings
 
 
 def create_driver():
-    options = Options()
-    options.headless = settings.HEADLESS
-    return webdriver.Chrome(ChromeDriverManager().install(), options=options)
+    options = selenium.webdriver.chrome.options.Options()
+    options.headless = service.settings.HEADLESS
+    return webdriver.Chrome(webdriver_manager.chrome.ChromeDriverManager().install(), options=options)
 
 
 def scrape_page(counties):
     driver = create_driver()
 
-    print(f"Accessing page at {settings.OSM_URL} ...")
-    driver.get(settings.OSM_URL)
+    print(f"Accessing page at {service.settings.OSM_URL} ...")
+    driver.get(service.settings.OSM_URL)
     sidebar = driver.find_element_by_css_selector('#sidebar')
     query = sidebar.find_element_by_css_selector('input#query')
     search = sidebar.find_element_by_name('commit')
