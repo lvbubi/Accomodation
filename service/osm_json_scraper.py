@@ -30,4 +30,4 @@ def fetch_coordinate(features, town):
 
 def feature_to_coordinate(feature):
     coordinates = feature['geometry']['coordinates']
-    return coordinates
+    return feature['properties']['display_name'], coordinates

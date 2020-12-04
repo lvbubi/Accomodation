@@ -15,12 +15,12 @@ def parse_package(path):
 
         column_indexes = np.where(pd.isnull(dataframe['Megnevezés']))[0]
         column_names = dataframe.iloc[column_indexes[0] + 1:column_indexes[1]]
-        map_column_names(dataframe, column_names)
+        #map_column_names(dataframe, column_names)
 
         count_of_meta_lines = column_indexes[1] - column_indexes[0]
 
         dataframe = dataframe.iloc[: - count_of_meta_lines - 1]
-        dataframe.name = filename
+        dataframe.name = column_names[['Megnevezés', 'Kód']]
         package.append(dataframe)
 
     return package
