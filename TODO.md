@@ -2,7 +2,7 @@
 ? egy településnek lehet az is attribútuma hogy melyik megyéhez tartozik
 Nem e lesz a tanítás fake emiatt? (overfitting), DE
 
-népesség, munkanélküli,
+Oszlopnevek átnevezése
 
 
 NÉPESSÉG ÉLETKOR SZERINTI ELOSZLÁSBAN

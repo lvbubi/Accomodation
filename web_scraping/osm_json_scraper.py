@@ -2,7 +2,7 @@ import json
 import urllib.parse
 import urllib.request
 
-import service.settings as settings
+import web_scraping.settings as settings
 
 
 def scrape_osm_api(towns):
