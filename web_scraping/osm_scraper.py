@@ -27,10 +27,9 @@ def scrape_page(counties):
         driver.implicitly_wait(10)
         result = sidebar.find_elements_by_css_selector('.search_results_entry a').pop(0)
         print(('downloading', county))
-        coordinates.append({"name": county,
+        coordinates.append({"title": county,
                             "extractedName": result.get_attribute('data-name'),
-                            "longitude": result.get_attribute('data-lat'),
-                            "latitude": result.get_attribute('data-lon')
+                            "coordinate": [float(result.get_attribute('data-lon')), float(result.get_attribute('data-lat'))],
                             })
     print('DONE')
     return coordinates
