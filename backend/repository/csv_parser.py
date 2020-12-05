@@ -21,7 +21,7 @@ def parse_package(path):
         count_of_meta_lines = column_indexes[1] - column_indexes[0]
 
         dataframe = dataframe.iloc[: - count_of_meta_lines - 1]
-        dataframe.name = column_names[['id', 'title']]
+        #dataframe.name = column_names[['id', 'title']]
         package.append(dataframe)
 
     return package
