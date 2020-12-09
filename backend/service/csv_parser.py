@@ -5,8 +5,7 @@ from os.path import isfile, join
 
 
 def parse_package(path):
-    all_files = [f for f in listdir(path) if isfile(join(path, f))]
-    csv_files = list(filter(lambda x: x.endswith('.csv'), all_files))
+    csv_files = get_all_csv(path)
 
     package = []
 
@@ -21,10 +20,15 @@ def parse_package(path):
         count_of_meta_lines = column_indexes[1] - column_indexes[0]
 
         dataframe = dataframe.iloc[: - count_of_meta_lines - 1]
-        #dataframe.name = column_names[['id', 'title']]
+        dataframe.name = column_names[['id', 'title']]
         package.append(dataframe)
 
     return package
+
+
+def get_all_csv(path):
+    all_files = [f for f in listdir(path) if isfile(join(path, f))]
+    return list(filter(lambda x: x.endswith('.csv'), all_files))
 
 
 def map_column_names(dataframe, column_names):

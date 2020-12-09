@@ -1,0 +1,256 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="c107d1c0-a4c4-402f-aaaa-0f64ff66fcc1" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/backend/ai/sandbox.ipynb" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vue_frontend/src/containers/MarkerService.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/convert.sh" beforeDir="false" afterPath="$PROJECT_DIR$/backend/convert.sh" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/backend/main.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/model/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/backend/ai/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/preprocessing/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/preprocessing/munkanelkuliseg.ipynb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/repository/csv_parser.py" beforeDir="false" afterPath="$PROJECT_DIR$/backend/service/csv_parser.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/service/coordinate_service.py" beforeDir="false" afterPath="$PROJECT_DIR$/backend/service/coordinate_service.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/visualization/munkanelkuliseg.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/backend/visualization/munkanelkuliseg.ipynb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/web_scraping/town_county_coordinates.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/backend/web_scraping/town_county_coordinates.ipynb" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Jupyter Notebook" />
+        <option value="Python Script" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectId" id="1l6yNeTFP00AHcO4ZFn9xQfQTBJ" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/vue_frontend" />
+    <property name="settings.editor.selected.configurable" value="org.jetbrains.plugins.notebooks.jupyter.connections.configuration.JupyterServerConfigurable" />
+    <property name="vue.rearranger.settings.migration" value="true" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$" />
+      <recent name="$PROJECT_DIR$/visualization" />
+      <recent name="$PROJECT_DIR$/service" />
+      <recent name="$PROJECT_DIR$/teir_adatok_2016/megye" />
+      <recent name="$PROJECT_DIR$/teir_adatok_2016/telepules" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/data" />
+      <recent name="$PROJECT_DIR$/web_scraping" />
+      <recent name="$PROJECT_DIR$/visualization" />
+      <recent name="$PROJECT_DIR$/teir_adatok_2016" />
+      <recent name="$PROJECT_DIR$/teir_adatok_2016/telepules" />
+    </key>
+  </component>
+  <component name="RunManager" selected="JavaScript Debug.kaki.html">
+    <configuration name="kaki.html" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/Accomodation/visualization/kaki.html" useBuiltInWebServerPort="true">
+      <method v="2" />
+    </configuration>
+    <configuration name="csv_parser" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="Accomodation" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/repository" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/repository/csv_parser.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="main" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="Accomodation" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/main.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="telepules" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="Accomodation" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/repository" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/repository/telepules.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="JavaScript Debug.kaki.html" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="c107d1c0-a4c4-402f-aaaa-0f64ff66fcc1" name="Default Changelist" comment="" />
+      <created>1606931797225</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1606931797225</updated>
+      <workItem from="1606931798579" duration="7000" />
+      <workItem from="1606931823813" duration="179000" />
+      <workItem from="1606932012034" duration="2204000" />
+      <workItem from="1607001379783" duration="24512000" />
+      <workItem from="1607033399787" duration="194000" />
+      <workItem from="1607067408092" duration="3066000" />
+      <workItem from="1607071270836" duration="1788000" />
+      <workItem from="1607083489145" duration="2098000" />
+      <workItem from="1607097660170" duration="1486000" />
+      <workItem from="1607104279605" duration="476000" />
+      <workItem from="1607104848626" duration="1797000" />
+      <workItem from="1607166103842" duration="1951000" />
+      <workItem from="1607168654238" duration="2901000" />
+      <workItem from="1607180953709" duration="10164000" />
+      <workItem from="1607193541822" duration="16000" />
+      <workItem from="1607194251716" duration="17000" />
+      <workItem from="1607524724287" duration="32000" />
+    </task>
+    <task id="LOCAL-00001" summary="csv parser">
+      <created>1607010185688</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1607010185688</updated>
+    </task>
+    <task id="LOCAL-00002" summary="UTF-8 enkódolás, oszlopok átnevezése">
+      <created>1607014103554</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1607014103554</updated>
+    </task>
+    <task id="LOCAL-00003" summary="town coordinate scraper">
+      <created>1607015458886</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1607015458886</updated>
+    </task>
+    <task id="LOCAL-00004" summary="town coordinate scraper">
+      <created>1607016643113</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1607016643113</updated>
+    </task>
+    <task id="LOCAL-00005" summary="bugfix">
+      <created>1607025295048</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1607025295048</updated>
+    </task>
+    <task id="LOCAL-00006" summary="munkanelkuliseg plotolasa">
+      <created>1607106589421</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1607106589422</updated>
+    </task>
+    <task id="LOCAL-00007" summary="refaktor">
+      <created>1607188033455</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1607188033455</updated>
+    </task>
+    <task id="LOCAL-00008" summary="code cleanup">
+      <created>1607188665384</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1607188665384</updated>
+    </task>
+    <task id="LOCAL-00009" summary="térkép vizualizáció">
+      <created>1607192131462</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1607192131462</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="csv parser" />
+    <MESSAGE value="UTF-8 enkódolás, oszlopok átnevezése" />
+    <MESSAGE value="town coordinate scraper" />
+    <MESSAGE value="bugfix" />
+    <MESSAGE value="munkanelkuliseg plotolasa" />
+    <MESSAGE value="refaktor" />
+    <MESSAGE value="code cleanup" />
+    <MESSAGE value="térkép vizualizáció" />
+    <option name="LAST_COMMIT_MESSAGE" value="térkép vizualizáció" />
+  </component>
+</project>

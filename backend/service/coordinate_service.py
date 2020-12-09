@@ -6,14 +6,26 @@ from ast import literal_eval as make_tuple
 
 def add_coordinates_to_county(dataframe):
     current_dir = os.path.dirname(os.path.realpath(__file__))
-    town_coordinates = pd.read_csv(current_dir + '/../data/countyCoordinates.csv')
+    county_coordinates = pd.read_csv(current_dir + '/../data/countyCoordinates.csv')
 
-    town_coordinates.coordinate = town_coordinates.coordinate.apply(lambda x: make_tuple(x))
-    return pd.merge(dataframe, town_coordinates, on='title', how='inner')
+    county_coordinates.coordinate = county_coordinates.coordinate.apply(lambda x: make_tuple(x))
+    return pd.merge(dataframe, county_coordinates, on='title', how='inner')
 
 
 def add_coordinates_to_town(dataframe):
-    town_coordinates = pd.read_csv('./data/townCoordinates.csv')
+    current_dir = os.path.dirname(os.path.realpath(__file__))
+    town_coordinates = pd.read_csv(current_dir + '/../data/townCoordinates.csv')
+    town_coordinates['county'] = town_coordinates.coordinate.apply(lambda x: extract_country_from_name(x))
+
+    # validation
+    invalid_data = town_coordinates[town_coordinates['county'].str.contains('megye') == False]
+    if len(invalid_data) != 0:
+        raise Exception('county csv contains invalid data', invalid_data)
 
     town_coordinates.coordinate = town_coordinates.coordinate.apply(lambda x: make_tuple(x)[1])
     return pd.merge(dataframe, town_coordinates, on='title', how='inner')
+
+
+def extract_country_from_name(raw_property):
+    name = make_tuple(raw_property)[0]
+    return name.split(',')[2]
