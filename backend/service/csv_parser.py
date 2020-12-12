@@ -4,6 +4,17 @@ from os import listdir
 from os.path import isfile, join
 
 
+def parse_package_to_dict(path):
+    csv_files = get_all_csv(path)
+
+    dictionary = {}
+
+    for filename in csv_files:
+        dictionary[filename] = parse_csv(path + filename)
+
+    return dictionary
+
+
 def parse_package(path):
     csv_files = get_all_csv(path)
 

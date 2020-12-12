@@ -7,6 +7,8 @@ import marker_selected from "./../assets/icons/marker_selected.png";
 import { Vector } from 'ol/layer';
 import { Vector as VectorSource } from 'ol/source';
 import { Icon, Style } from 'ol/style';
+import Stroke from "ol/style/Stroke";
+import Fill from "ol/style/Fill";
 
 const checkedStyle = new Style({
   image: new Icon({
@@ -39,6 +41,25 @@ export default {
       maxZoom: 18,
       minZoom: 2,
       style: defaultStyle
+    })
+  },
+  baszottVector: () => {
+    return new Vector({
+      name: 'markers',
+      source: new VectorSource({
+        features: []
+      }),
+      maxZoom: 18,
+      minZoom: 2,
+      style: new Style({
+        stroke: new Stroke({
+          color: 'blue',
+          width: 3
+        }),
+        fill: new Fill({
+          color: 'rgba(0, 0, 255, 0.1)'
+        })
+      })
     })
   }
 }
