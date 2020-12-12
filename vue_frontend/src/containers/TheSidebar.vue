@@ -10,10 +10,11 @@
       <v-img contain src="http://oktatas.mik.uni-pannon.hu/pluginfile.php/1/theme_enlightlite/logo/1604907398/cimer_szines_99_transparent.png" max-height="150px"></v-img>
     </CSidebarBrand>
 
-    <transition name="fade">
-      <DoughnutChart v-show="!minimize"/>
-    </transition>
+    <CSidebarNavDropdown name="ASD" :items="dropdown"></CSidebarNavDropdown>
 
+    <DoughnutChart class="square"/>
+
+    <img :src="$store.state.correlationUrl" class="square">
 
     <CSidebarMinimizer
         class="d-md-down-none"
@@ -32,6 +33,16 @@ export default {
   nav,
   components: {
     DoughnutChart
+  },
+  data: () => {
+    return {
+      dropdown: [      {
+        _name: 'CSidebarNavItem',
+        name: 'Charts',
+        to: '/charts',
+        icon: 'cil-chart-pie'
+      }]
+    }
   },
   computed: {
     show() {
@@ -60,5 +71,14 @@ export default {
   .fade-enter-from,
   .fade-leave-to {
     opacity: 0;
+  }
+
+  .square {
+    width: 100%;
+  }
+
+  .square:after {
+    content: "";
+    display: block;
   }
 </style>

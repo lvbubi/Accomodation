@@ -1,6 +1,6 @@
 <template>
-  <div ref="map-root"
-       style="width: 100%; height: 100%">
+  <div ref="map-root" style="width: 100%; height: 100%">
+    <TreeView :map="olMap"></TreeView>
   </div>
 </template>
 
@@ -15,10 +15,11 @@ import {Point} from "ol/geom";
 import {fromLonLat} from "ol/proj";
 import OSM from "ol/source/OSM";
 import MarkerService from "@/containers/MarkerService";
+import TreeView from "@/containers/TreeView";
 
 export default {
   name: 'TheMap',
-  components: {},
+  components: {TreeView},
   data: () => ({
     // store OL objects on the component instance
     olMap: {}
@@ -55,9 +56,9 @@ export default {
       for(var i in a.data.coordinate)
         result.push(a.data.coordinate [i]);
 
-      console.log(a.data.coordinate)
+      //console.log(a.data.coordinate)
       const features = result.map(coordinate => {
-            console.log(coordinate)
+            //console.log(coordinate)
             return new Feature({
               geometry: new Point(fromLonLat(coordinate)),
               style: MarkerService.defaultStyle
