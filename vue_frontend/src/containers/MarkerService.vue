@@ -45,7 +45,7 @@ export default {
   },
   baszottVector: () => {
     return new Vector({
-      name: 'markers',
+      name: 'baszott',
       source: new VectorSource({
         features: []
       }),

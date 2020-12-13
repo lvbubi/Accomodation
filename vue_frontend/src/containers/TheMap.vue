@@ -32,7 +32,6 @@ export default {
 
   mounted() {
     const vectorLayer = MarkerService.markerVector();
-    const baszottLayer = MarkerService.baszottVector();
     const map = new Map({
       // the map will be created using the 'map-root' ref
       target: this.$refs['map-root'],
@@ -42,7 +41,7 @@ export default {
           source: new OSM() // tiles are served by OpenStreetMap
         }),
         vectorLayer,
-        baszottLayer
+        this.$store.state.LayerStore.circleLayer
       ],
 
       // the map view will initially show the whole world
@@ -73,7 +72,7 @@ export default {
     myFeature.setStyle(selected_polygon_style)
 
     //myFeature.setStyle(selected_polygon_style)
-    baszottLayer.getSource().addFeature(myFeature)
+    //this.$store.state.circleLayer.getSource().addFeature(myFeature)
 
     //{"bubblingMouseEvents": true, "color": "crimson", "dashArray": null,
     // "dashOffset": null, "fill": true, "fillColor": "crimson", "fillOpacity": 0.2,

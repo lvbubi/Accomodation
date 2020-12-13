@@ -1,5 +1,6 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
+import layerStore from "@/store/layerStore";
 
 Vue.use(Vuex);
 
@@ -7,12 +8,7 @@ const state = {
   sidebarShow: 'responsive',
   sidebarMinimize: false,
   zoomLevel: 0,
-  treeLevel: 'county',
   correlationUrl: 'https://www.google.com/logos/doodles/2020/december-holidays-days-2-30-6753651837108830.3-law.gif',
-  treeData: {
-    options: [],
-    values: []
-  }
 }
 
 const mutations = {
@@ -20,13 +16,13 @@ const mutations = {
     if(state.zoomLevel > 10){
       if(newZoomLevel <= 10){
         console.log('CHANGE TREE TO COUNTY LEVEL');
-        state.treeLevel = 'county';
+        state.LayerStore.treeLevel = 'county';
       }
     }
     else{
       if(newZoomLevel > 10){
         console.log('CHANGE TREE TO TOWN LEVEL');
-        state.treeLevel = 'town';
+        state.LayerStore.treeLevel = 'town';
       }
     }
     state.zoomLevel = newZoomLevel;
@@ -46,6 +42,9 @@ const mutations = {
 }
 
 export default new Vuex.Store({
+  modules: {
+    LayerStore: layerStore
+  },
   state,
   mutations
 })

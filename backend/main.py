@@ -21,6 +21,15 @@ CORS(app)
 data = service.add_coordinates_to_town(townData[0])
 
 
+@app.route('/percentage/<root>/<csv>/<column>')
+def column_percentage(root, csv, column):
+    df = townDictionary[csv]
+    df = service.add_coordinates_to_town(df)
+    df[column] = df[column].transform(lambda x: x / x.sum())
+
+    return df[['coordinate', 'title', column]].to_json()
+
+
 @app.route('/correlation/<root>/<csv>')
 def csv_correlation(root, csv):
     fig1 = plt.figure(facecolor='#3c4b64')
@@ -37,13 +46,13 @@ def csv_correlation(root, csv):
     plt.savefig(buf, format='png')
     buf.seek(0)
 
-
     return send_file(
         buf,
         as_attachment=True,
         attachment_filename='${root}/${csv}.png',
         mimetype='image/png'
     )
+
 
 @app.route('/')
 def hello_world():

@@ -1,9 +1,9 @@
 <template>
   <div id="app">
-    <treeselect v-model="$store.state.treeData.values"
+    <treeselect v-model="$store.state.LayerStore.treeData.values"
                 :multiple="true"
                 :alwaysOpen="true"
-                :options="$store.state.treeData.options"
+                :options="$store.state.LayerStore.treeData.options"
                 @select="onselect"
                 @input="oninput"
                 @deselect="ondeselect"
@@ -16,6 +16,12 @@ import Treeselect from '@riophae/vue-treeselect'
 import '@riophae/vue-treeselect/dist/vue-treeselect.css'
 import * as axios from "axios";
 import { uuid } from 'vue-uuid';
+import {fromLonLat} from "ol/proj";
+import {Feature} from "ol";
+import {Circle} from "ol/geom";
+import Style from "ol/style/Style";
+import Stroke from "ol/style/Stroke";
+import Fill from "ol/style/Fill";
 function changeStyleOfSelection(event, style){
 
   if(event.children) {
@@ -77,7 +83,7 @@ export default {
       axios.default.get('http://localhost:5000/tree').then((a) => {
         console.log(a.data);
 
-        store.state.treeData.options = Object.entries(a.data).map(x => {
+        store.state.LayerStore.treeData.options = Object.entries(a.data).map(x => {
           return {
             id: x[0],
             label: x[0],
@@ -88,15 +94,35 @@ export default {
     });
   },
   watch: {
-    '$store.state.treeLevel': function() {
-      console.log(this.$store.state.treeLevel)
+    '$store.state.LayerStore.treeLevel': function() {
+      console.log(this.$store.state.LayerStore.treeLevel)
     }
   },
   methods: {
     onselect: function (event) {
+      const store = this.$store;
+      const map = this.map;
       if(event.columnId != null) {
-        //TODO: Térképi diagramm
-        alert(event.columnId)
+        //event.root a zoomlevelhez legyen kötődve
+        axios.default.get(`http://localhost:5000/percentage/${event.root}/${event.csv}/${event.columnId}`).then((a) => {
+          var centerLongitudeLatitude = fromLonLat([18.7887741, 46.4226584]);
+
+
+          const myFeature = new Feature(new Circle(centerLongitudeLatitude, 4000));
+
+          var selected_polygon_style = new Style({
+            stroke: new Stroke({
+              color: 'crimson',
+              width: 3
+            }),
+            fill: new Fill({
+              color: 'rgba(0, 0, 255, 0.1)'
+            })
+          })
+
+          myFeature.setStyle(selected_polygon_style);
+          store.state.LayerStore.circleLayer.getSource().addFeature(myFeature);
+        });
       }
       if(event.csv != null) {
         this.$store.state.correlationUrl = `http://localhost:5000/correlation/${event.root}/${event.csv}`;

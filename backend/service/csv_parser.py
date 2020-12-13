@@ -1,3 +1,5 @@
+from unittest.mock import inplace
+
 import pandas as pd
 import numpy as np
 from os import listdir
@@ -38,6 +40,7 @@ def parse_csv(path):
 
     dataframe = dataframe.iloc[: - count_of_meta_lines - 1]
     dataframe.name = column_names[['id', 'title']]
+    dataframe.fillna(0, inplace=True)
 
     return dataframe
 
