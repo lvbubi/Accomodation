@@ -29,7 +29,9 @@ def column_percentage(root, csv, column):
     df = service.add_coordinates_to_town(df)
     df[column] = df[column].transform(lambda x: x / x.sum())
 
-    return df[['coordinate', 'title', column]].to_json()
+    subset = df[['coordinate', 'title', column]]
+
+    return jsonify([tuple(x) for x in subset.to_numpy()])
 
 
 @app.route('/correlation/<root>/<csv>')

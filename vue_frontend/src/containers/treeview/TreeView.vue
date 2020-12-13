@@ -16,12 +16,8 @@ import Treeselect from '@riophae/vue-treeselect'
 import '@riophae/vue-treeselect/dist/vue-treeselect.css'
 import * as axios from "axios";
 import { uuid } from 'vue-uuid';
-import {fromLonLat} from "ol/proj";
-import {Feature} from "ol";
-import {Circle} from "ol/geom";
-import Style from "ol/style/Style";
-import Stroke from "ol/style/Stroke";
-import Fill from "ol/style/Fill";
+import LayerStore from '@/store/layerStore';
+import {createFeature, fuckYeah} from "@/containers/treeview/FeatureService";
 function changeStyleOfSelection(event, style){
 
   if(event.children) {
@@ -83,7 +79,7 @@ export default {
       axios.default.get('http://localhost:5000/tree').then((a) => {
         console.log(a.data);
 
-        store.state.LayerStore.treeData.options = Object.entries(a.data).map(x => {
+        LayerStore.state.treeData.options = Object.entries(a.data).map(x => {
           return {
             id: x[0],
             label: x[0],
@@ -94,41 +90,30 @@ export default {
     });
   },
   watch: {
-    '$store.state.LayerStore.treeLevel': function() {
-      console.log(this.$store.state.LayerStore.treeLevel)
+    '$LayerStore.state.treeLevel': function() {
+      console.log(this.LayerStore.state.treeLevel)
     }
   },
   methods: {
     onselect: function (event) {
-      const store = this.$store;
-      const map = this.map;
       if(event.columnId != null) {
         //event.root a zoomlevelhez legyen kötődve
         axios.default.get(`http://localhost:5000/percentage/${event.root}/${event.csv}/${event.columnId}`).then((a) => {
-          var centerLongitudeLatitude = fromLonLat([18.7887741, 46.4226584]);
 
+          console.log(a)
 
-          const myFeature = new Feature(new Circle(centerLongitudeLatitude, 4000));
+          LayerStore.state.circleLayer.getSource().addFeatures(a.data.map(x => {
+            return createFeature(x[0], x[2], x[1])
+            //0 : coordinate, 1: title, 2: value
+          }));
 
-          var selected_polygon_style = new Style({
-            stroke: new Stroke({
-              color: 'crimson',
-              width: 3
-            }),
-            fill: new Fill({
-              color: 'rgba(0, 0, 255, 0.1)'
-            })
-          })
-
-          myFeature.setStyle(selected_polygon_style);
-          store.state.LayerStore.circleLayer.getSource().addFeature(myFeature);
+          //LayerStore.state.circleLayer.getSource().addFeature(createFeature());
         });
       }
       if(event.csv != null) {
         this.$store.state.correlationUrl = `http://localhost:5000/correlation/${event.root}/${event.csv}`;
       }
       console.log(event)
-      //changeStyleOfSelection(event, MarkerService.checkedStyle);
     },
     oninput: function (event) {
       console.log('input changed', event);

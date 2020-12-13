@@ -15,7 +15,7 @@ import {Point} from "ol/geom";
 import {fromLonLat} from "ol/proj";
 import OSM from "ol/source/OSM";
 import MarkerService from "@/containers/MarkerService";
-import TreeView from "@/containers/TreeView";
+import TreeView from "@/containers/treeview/TreeView";
 import 'ol'
 
 export default {
