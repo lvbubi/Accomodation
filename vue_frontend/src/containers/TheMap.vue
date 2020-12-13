@@ -10,16 +10,12 @@ import Map from 'ol/Map'
 import TileLayer from 'ol/layer/Tile'
 import 'ol/ol.css'
 import * as axios from "axios";
-import ol, {Feature} from "ol";
-import {Point, Circle} from "ol/geom";
+import {Feature} from "ol";
+import {Point} from "ol/geom";
 import {fromLonLat} from "ol/proj";
 import OSM from "ol/source/OSM";
 import MarkerService from "@/containers/MarkerService";
 import TreeView from "@/containers/TreeView";
-import Style from "ol/style/Style";
-import Fill from "ol/style/Fill";
-import Stroke from "ol/style/Stroke";
-import {Vector} from "ol/layer";
 import 'ol'
 
 export default {
@@ -32,7 +28,7 @@ export default {
 
   mounted() {
     const vectorLayer = MarkerService.markerVector();
-    const map = new Map({
+    this.olMap = new Map({
       // the map will be created using the 'map-root' ref
       target: this.$refs['map-root'],
       layers: [
@@ -51,25 +47,6 @@ export default {
         constrainResolution: true
       }),
     });
-
-    this.olMap = map;
-
-    var centerLongitudeLatitude = fromLonLat([18.7887741, 46.4226584]);
-
-
-    const myFeature = new Feature(new Circle(centerLongitudeLatitude, 4000));
-
-    var selected_polygon_style = new Style({
-      stroke: new Stroke({
-        color: 'crimson',
-        width: 3
-      }),
-      fill: new Fill({
-        color: 'rgba(0, 0, 255, 0.1)'
-      })
-    })
-
-    myFeature.setStyle(selected_polygon_style)
 
     //myFeature.setStyle(selected_polygon_style)
     //this.$store.state.circleLayer.getSource().addFeature(myFeature)

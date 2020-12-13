@@ -15,6 +15,8 @@ townData = parser.parse_package(town_path)
 townDictionary = parser.parse_package_to_dict(town_path)
 countyData = parser.parse_package(county_path)
 
+full_dictionary = parser.parse_data_to_dict()
+
 app = Flask(__name__)
 CORS(app)
 
@@ -23,7 +25,7 @@ data = service.add_coordinates_to_town(townData[0])
 
 @app.route('/percentage/<root>/<csv>/<column>')
 def column_percentage(root, csv, column):
-    df = townDictionary[csv]
+    df = full_dictionary[root][csv]
     df = service.add_coordinates_to_town(df)
     df[column] = df[column].transform(lambda x: x / x.sum())
 
@@ -36,7 +38,7 @@ def csv_correlation(root, csv):
     ax = fig1.add_subplot(111)
     ax.set_yticklabels([])
     ax.set_xticklabels([])
-    dataframe = townDictionary[csv].drop(['title', 'id'], axis=1)
+    dataframe = full_dictionary[root][csv].drop(['title', 'id'], axis=1)
     print(dataframe)
 
     cax = ax.matshow(dataframe.corr(method='pearson'), cmap='coolwarm')
