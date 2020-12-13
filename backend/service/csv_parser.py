@@ -3,22 +3,23 @@ import numpy as np
 from os import listdir
 from os.path import isfile, join
 from service.options import county_path, town_path
+from service.coordinate_service import add_coordinates_to_town, add_coordinates_to_county
 
 
 def parse_data_to_dict():
     return {
-        'county': parse_package_to_dict(county_path),
-        'town': parse_package_to_dict(town_path)
+        'county': parse_package_to_dict(county_path, add_coordinates_to_county),
+        'town': parse_package_to_dict(town_path, add_coordinates_to_town)
     }
 
 
-def parse_package_to_dict(path):
+def parse_package_to_dict(path, coordinate_function):
     csv_files = get_all_csv(path)
 
     dictionary = {}
 
     for filename in csv_files:
-        dictionary[filename] = parse_csv(path + filename)
+        dictionary[filename] = coordinate_function(parse_csv(path + filename))
 
     return dictionary
 
