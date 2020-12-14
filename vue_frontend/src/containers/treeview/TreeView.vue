@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <treeselect v-model="$store.state.LayerStore.treeData.values"
-                :multiple="true"
+                :multiple="false"
                 :alwaysOpen="true"
                 :options="$store.state.LayerStore.treeData.options"
                 @select="onselect"
@@ -17,7 +17,7 @@ import '@riophae/vue-treeselect/dist/vue-treeselect.css'
 import * as axios from "axios";
 import { uuid } from 'vue-uuid';
 import LayerStore from '@/store/layerStore';
-import {createFeature, fuckYeah} from "@/containers/treeview/FeatureService";
+import {createFeature} from "@/containers/treeview/FeatureService";
 function changeStyleOfSelection(event, style){
 
   if(event.children) {
@@ -96,18 +96,15 @@ export default {
   },
   methods: {
     onselect: function (event) {
+      LayerStore.state.circleLayer.getSource().clear();
       if(event.columnId != null) {
         //event.root a zoomlevelhez legyen kötődve
-        axios.default.get(`http://localhost:5000/percentage/${event.root}/${event.csv}/${event.columnId}`).then((a) => {
 
-          console.log(a)
+        const path = `${event.root}/${event.csv}/${event.columnId}`
 
-          LayerStore.state.circleLayer.getSource().addFeatures(a.data.map(x => {
-            return createFeature(x[0], x[2], x[1])
-            //0 : coordinate, 1: title, 2: value
-          }));
-
-          //LayerStore.state.circleLayer.getSource().addFeature(createFeature());
+        axios.default.get(`http://localhost:5000/percentage/${path}`).then((a) => {
+          const features = a.data.map(x => createFeature(x, path))
+          LayerStore.state.circleLayer.getSource().addFeatures(features);
         });
       }
       if(event.csv != null) {
@@ -119,6 +116,7 @@ export default {
       console.log('input changed', event);
     },
     ondeselect: event => {
+      LayerStore.state.circleLayer.getSource().clear();
       //changeStyleOfSelection(event, MarkerService.defaultStyle);
     }
   }

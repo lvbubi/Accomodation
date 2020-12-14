@@ -1,6 +1,7 @@
 <template>
   <div ref="map-root" style="width: 100%; height: 100%">
     <TreeView :map="olMap"></TreeView>
+    <FeaturePopup :map="olMap"></FeaturePopup>
   </div>
 </template>
 
@@ -17,10 +18,11 @@ import OSM from "ol/source/OSM";
 import MarkerService from "@/containers/MarkerService";
 import TreeView from "@/containers/treeview/TreeView";
 import 'ol'
+import FeaturePopup from "@/containers/FeaturePopup";
 
 export default {
   name: 'TheMap',
-  components: {TreeView},
+  components: {FeaturePopup, TreeView},
   data: () => ({
     // store OL objects on the component instance
     olMap: {}

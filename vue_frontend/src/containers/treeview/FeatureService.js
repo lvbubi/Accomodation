@@ -5,30 +5,16 @@ import Style from "ol/style/Style";
 import Stroke from "ol/style/Stroke";
 import Fill from "ol/style/Fill";
 
-export function fuckYeah(arrays){
+export function createFeature(data, path){
+    const id = data[0];
+    const coordinate = data[1];
+    const value = data[2];
+    const myFeature = new Feature(new Circle(fromLonLat(coordinate), value * 100 * 4000));
 
-    let lstOut = []
-
-    arrays.forEach(
-        function (a) {
-            [0, 1, 2].forEach(
-                function (i) {
-                    // side-effect on an array outside the function
-                    lstOut[i] += a[i];
-                }
-            );
-        }
-    );
-
-    return lstOut
-}
-
-export function createFeature(coordinate, value, title){
-
-    const centerLongitudeLatitude = fromLonLat(coordinate);
-
-
-    const myFeature = new Feature(new Circle(centerLongitudeLatitude, 4000));
+    myFeature.setProperties({
+        id: id,
+        path: path
+    });
 
     const selected_polygon_style = new Style({
         stroke: new Stroke({
