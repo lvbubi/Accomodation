@@ -12,7 +12,6 @@ def csv_correlation(root, csv):
     ax.set_yticklabels([])
     ax.set_xticklabels([])
     dataframe = full_dictionary[root][csv].drop(['title', 'id'], axis=1)
-    print(dataframe)
 
     cax = ax.matshow(dataframe.corr(method='pearson'), cmap='coolwarm')
     buf = io.BytesIO()
