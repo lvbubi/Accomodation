@@ -50,6 +50,8 @@ export default {
       }),
     });
 
+    console.log('map loaded')
+
     //myFeature.setStyle(selected_polygon_style)
     //this.$store.state.circleLayer.getSource().addFeature(myFeature)
 
@@ -57,7 +59,7 @@ export default {
     // "dashOffset": null, "fill": true, "fillColor": "crimson", "fillOpacity": 0.2,
     // "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0,
     // "radius": 3301, "stroke": true, "weight": 3}
-    axios.default.get('http://localhost:5000').then((a) => {
+    /*axios.default.get('http://localhost:5000').then((a) => {
 
       var result = [];
 
@@ -76,7 +78,7 @@ export default {
 
       //vectorLayer.getSource().addFeatures(features);
       console.log(a);
-    });
+    });*/
   }
 }
 </script>

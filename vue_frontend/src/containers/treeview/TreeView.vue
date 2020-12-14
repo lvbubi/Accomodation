@@ -97,20 +97,22 @@ export default {
   methods: {
     onselect: function (event) {
       LayerStore.state.circleLayer.getSource().clear();
+
+      const path = [event.root, event.csv, event.columnId].filter(x => x != null).join('/')
+
+      if(event.csv != null) {
+        this.$store.state.chartUrl = `http://localhost:5000/${this.$store.state.chartType}/${path}`;
+      }
+
       if(event.columnId != null) {
         //event.root a zoomlevelhez legyen kötődve
-
-        const path = `${event.root}/${event.csv}/${event.columnId}`
 
         axios.default.get(`http://localhost:5000/percentage/${path}`).then((a) => {
           const features = a.data.map(x => createFeature(x, path))
           LayerStore.state.circleLayer.getSource().addFeatures(features);
         });
+        return;
       }
-      if(event.csv != null) {
-        this.$store.state.correlationUrl = `http://localhost:5000/correlation/${event.root}/${event.csv}`;
-      }
-      console.log(event)
     },
     oninput: function (event) {
       console.log('input changed', event);

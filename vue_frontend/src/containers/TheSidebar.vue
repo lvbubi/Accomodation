@@ -11,10 +11,15 @@
     </CSidebarBrand>
 
     <CSidebarNavDropdown name="ASD" :items="dropdown"></CSidebarNavDropdown>
-
     <DoughnutChart class="square"/>
 
-    <img :src="$store.state.correlationUrl" class="square">
+    <CSelect
+        label="Chart Type"
+        :options="['scatter', 'correlation']"
+        @update:value="(value) => $store.state.chartType = value"
+        :value="$store.state.chartType"
+    />
+    <img :src="$store.state.chartUrl" class="square">
 
     <CSidebarMinimizer
         class="d-md-down-none"
