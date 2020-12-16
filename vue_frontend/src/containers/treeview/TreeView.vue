@@ -18,15 +18,6 @@ import * as axios from "axios";
 import { uuid } from 'vue-uuid';
 import LayerStore from '@/store/layerStore';
 import {createFeature} from "@/containers/treeview/FeatureService";
-function changeStyleOfSelection(event, style){
-
-  if(event.children) {
-    event.children.forEach(child => changeStyleOfSelection(child, style));
-    //alert('root clicked');
-  }
-  else {
-  }
-}
 
 function extractCsvNames(csvTree, root){
   return csvTree.map((currElement) => {
@@ -36,6 +27,7 @@ function extractCsvNames(csvTree, root){
       label: node[0],
       children: extractColumnNames(node[1], root, node[0]),
       root: root,
+      path: `${root}/${node[0]}`,
       csv: node[0]
     }
   });
@@ -51,6 +43,7 @@ function extractColumnNames(columnNames, root, parent){
       label: titles[index][1],
       root: root,
       csv: parent,
+      path: `${root}/${parent}/${node[1]}`,
       columnId: node[1]
     }
   });
@@ -132,7 +125,7 @@ export default {
   width: 30%;
   position: absolute;
   right: 0;
-  z-index: 1000;
+  z-index: 100;
 }
 
 .vue-treeselect__menu{
