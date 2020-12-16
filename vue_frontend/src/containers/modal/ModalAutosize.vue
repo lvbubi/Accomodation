@@ -37,15 +37,18 @@ export default {
   methods: {
     beforeOpen(event) {
       this.image = this.$store.state.chartUrl;
-      const content = this.$refs['card-meta'];
 
       const path = this.$store.getters.selectedNode.path
 
       axios.default.get(`http://localhost:5000/chart/meta/${path}`).then((a) => {
         console.log(a);
-        this.metaData = Object.entries(a.data).map(x => `<p>${x[1]}</p>`).join('\n');
-        console.log(content, 'content')
-        //content.innerHTML = Object.entries(a.data).map(x => `<br><code>${x[0]}: ${x[1]}</code>`).join('\n');
+        console.log(Array.isArray(a.data));
+        if(Array.isArray(a.data)){
+          this.metaData = a.data.map(x => `<p>${x}</p>`).join('\n');
+        }
+        else{
+          this.metaData = Object.entries(a.data).map(x => `<p>${x[0]}: ${x[1]}</p>`).join('\n');
+        }
       });
 
       console.log('before-open', event)
