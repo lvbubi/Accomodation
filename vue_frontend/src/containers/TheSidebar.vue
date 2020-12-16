@@ -22,7 +22,7 @@
         :value="$store.state.chartType"
         v-if="$store.getters.selectVisible"
     />
-    <img :src="$store.state.chartUrl" class="square">
+    <img :src="$store.state.chartUrl" class="square" @click="$modal.show('size-modal')">
 
     <CSidebarMinimizer
         class="d-md-down-none"

@@ -7,6 +7,9 @@ import { iconsSet as icons } from './assets/icons/icons.js'
 import store from './store'
 import Toasted from 'vue-toasted';
 
+import VModal from 'vue-js-modal'
+Vue.use(VModal)
+
 Vue.config.performance = true
 Vue.use(CoreuiVue)
 Vue.use(Toasted)

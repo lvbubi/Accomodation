@@ -1,5 +1,6 @@
 <template>
   <div class="c-app">
+    <ModalAutosize></ModalAutosize>
     <TheSidebar/>
     <CWrapper>
       <div class="c-body">
@@ -14,10 +15,12 @@
 <script>
 import TheSidebar from './TheSidebar'
 import TheMap from './TheMap'
+import ModalAutosize from "@/containers/ModalAutosize";
 
 export default {
   name: 'TheContainer',
   components: {
+    ModalAutosize,
     TheSidebar,
     TheMap
   }
