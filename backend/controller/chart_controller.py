@@ -6,14 +6,14 @@ import matplotlib.pyplot as plt
 import numpy as np
 
 
-@app.route('/correlation/<root>/<csv>')
-def csv_correlation(root, csv):
+@app.route('/correlation/<c_type>/<root>/<csv>')
+def csv_correlation(c_type, root, csv):
     ax = plt.gca()
     ax.axes.xaxis.set_visible(False)
     ax.axes.yaxis.set_visible(False)
     dataframe = full_dictionary[root][csv].drop(['title', 'id'], axis=1)
     dataframe = dataframe.loc[:, (dataframe != 0).any(axis=0)]
-    cax = ax.matshow(dataframe.corr(method='pearson'), cmap='coolwarm')
+    cax = ax.matshow(dataframe.corr(method=c_type), cmap='coolwarm')
 
     return create_response(f'correlation_${root}_${csv}.png')
 
