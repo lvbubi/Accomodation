@@ -18,14 +18,13 @@
         A new paragraph will be added every 5 sec to show how
         <b>height</b> scales.
       </div>
-      <div v-for="(p, i) in paragraphs" :key="i">
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla dictum
-        purus egestas libero ornare venenatis. Maecenas pharetra tortor eu
-        tortor imperdiet, a faucibus quam finibus. Nulla id lacinia quam.
-        Praesent imperdiet sed magna non finibus. Aenean blandit, mauris vitae
-        lacinia rutrum, nunc mi scelerisque sem, in laoreet sem lectus ut orci.
-        Ut egestas nulla in vehicula feugiat. Vivamus tincidunt nisi vel risus
-        dictum suscipit. Nulla id blandit mi, vulputate aliquam enim.
+      <div class="row">
+        <div class="column">
+          <img :src="image"/>
+        </div>
+        <div class="column">
+          cica
+        </div>
       </div>
     </div>
   </modal>
@@ -35,12 +34,12 @@ export default {
   name: 'ModalAutosize',
   data() {
     return {
-      paragraphs: [null, null],
-      timer: null
+      image: {}
     }
   },
   methods: {
     beforeOpen(event) {
+      this.image = this.$store.state.chartUrl;
       console.log('before-open', event)
     },
     beforeClose() {
@@ -54,6 +53,7 @@ export default {
       // e.ref should not be undefined here
       console.log('opened', event)
       console.log('ref', event.ref)
+      console.log(this.$store.getters.selectedNode)
     },
     closed(event) {
       this.paragraphs = []

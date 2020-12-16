@@ -12,7 +12,9 @@ class middleware():
         self.password = 'IamIronMan'
 
     def __call__(self, environ, start_response):
-        plt.cla()
-        plt.clf()
-        plt.figure(facecolor='#3c4b64')
+        # try:
+        #     plt.cla()
+        #     plt.clf()
+        # except:
+        #     print('plt was empty')
         return self.app(environ, start_response)

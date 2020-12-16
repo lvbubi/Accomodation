@@ -1,9 +1,28 @@
-from flask import send_file
+from flask import send_file, jsonify
 from main import app, full_dictionary
 
 import io
 import matplotlib.pyplot as plt
 import numpy as np
+import pandas as pd
+
+
+@app.route('/chart/meta/<root>/<csv>')
+def csv_meta(root, csv):
+    dataframe = full_dictionary[root][csv]  # type: pd.Dataframe
+
+    return jsonify(dataframe.name['id'].tolist())
+
+
+@app.route('/chart/meta/<root>/<csv>/<column_id>')
+def column_meta(root, csv, column_id):
+    dataframe = full_dictionary[root][csv]  # type: pd.Dataframe
+    data = {
+        'title': dataframe.name[dataframe.name['id' == column_id]].tolist(),
+        'avg': dataframe.mean(),
+        'sum': dataframe.sum()
+    }
+    return jsonify(data)
 
 
 @app.route('/correlation/<c_type>/<root>/<csv>')
@@ -20,7 +39,6 @@ def csv_correlation(c_type, root, csv):
 
 @app.route('/heatmap/county/<csv>')
 def csv_heatmap(root, csv):
-
     dataframe = get_data_columns(root, csv)
     dataframe = dataframe.loc[:, (dataframe != 0).any(axis=0)]
 
@@ -36,8 +54,7 @@ def csv_scatter(root, csv, column_id):
     x = np.arange(start=0, stop=len(values), step=1)
     y = values
 
-    plt.scatter(x, y)
-
+    plt.scatter(x, y, color='orange')
     ax = plt.gca()
     ax.axes.xaxis.set_visible(False)
     ax.axes.yaxis.set_visible(True)
@@ -47,8 +64,10 @@ def csv_scatter(root, csv, column_id):
 
 def create_response(name):
     buf = io.BytesIO()
-    plt.savefig(buf, format='png')
+    plt.savefig(buf, format='png', transparent=True)
     buf.seek(0)
+    plt.cla()
+    plt.clf()
 
     return send_file(
         buf,
