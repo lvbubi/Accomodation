@@ -15,7 +15,7 @@
 <script>
 import TheSidebar from './TheSidebar'
 import TheMap from './TheMap'
-import ModalAutosize from "@/containers/ModalAutosize";
+import ModalAutosize from "@/containers/modal/ModalAutosize";
 
 export default {
   name: 'TheContainer',

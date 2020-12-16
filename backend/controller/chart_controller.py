@@ -17,10 +17,14 @@ def csv_meta(root, csv):
 @app.route('/chart/meta/<root>/<csv>/<column_id>')
 def column_meta(root, csv, column_id):
     dataframe = full_dictionary[root][csv]  # type: pd.Dataframe
+
+    df = dataframe.name
+    column_row = df.loc[df['title'] == column_id]['id']
+    title = column_row.iloc[0]
     data = {
-        'title': dataframe.name[dataframe.name['id' == column_id]].tolist(),
-        'avg': dataframe.mean(),
-        'sum': dataframe.sum()
+        'title': title,
+        'avg': dataframe[column_id].mean(),
+        'sum': dataframe[column_id].sum()
     }
     return jsonify(data)
 

@@ -14,32 +14,40 @@
       @closed="closed"
   >
     <div class="size-modal-content">
-      <div>
-        A new paragraph will be added every 5 sec to show how
-        <b>height</b> scales.
-      </div>
-      <div class="row">
-        <div class="column">
+      <div class="grid-container">
+        <div class="item3">
           <img :src="image"/>
         </div>
-        <div class="column">
-          cica
-        </div>
+        <div class="item4 center" v-html="metaData">Right</div>
       </div>
     </div>
   </modal>
 </template>
 <script>
+import * as axios from "axios";
+
 export default {
   name: 'ModalAutosize',
   data() {
     return {
-      image: {}
+      image: {},
+      metaData: 'cica'
     }
   },
   methods: {
     beforeOpen(event) {
       this.image = this.$store.state.chartUrl;
+      const content = this.$refs['card-meta'];
+
+      const path = this.$store.getters.selectedNode.path
+
+      axios.default.get(`http://localhost:5000/chart/meta/${path}`).then((a) => {
+        console.log(a);
+        this.metaData = Object.entries(a.data).map(x => `<p>${x[1]}</p>`).join('\n');
+        console.log(content, 'content')
+        //content.innerHTML = Object.entries(a.data).map(x => `<br><code>${x[0]}: ${x[1]}</code>`).join('\n');
+      });
+
       console.log('before-open', event)
     },
     beforeClose() {
@@ -47,16 +55,9 @@ export default {
       this.timer = null
     },
     opened(event) {
-      this.timer = setInterval(() => {
-        this.paragraphs.push(null)
-      }, 5000)
-      // e.ref should not be undefined here
       console.log('opened', event)
-      console.log('ref', event.ref)
-      console.log(this.$store.getters.selectedNode)
     },
     closed(event) {
-      this.paragraphs = []
       console.log('closed', event)
     }
   }
@@ -67,12 +68,39 @@ export default {
   padding: 10px;
   font-style: 13;
 }
+
 .v--modal-overlay[data-modal='size-modal'] {
   background: rgba(0, 0, 0, 0.5);
 }
+
 .demo-modal-class {
   border-radius: 5px;
   background: #f7f7f7;
   box-shadow: 5px 5px 30px 0px rgba(46, 61, 73, 0.6);
+}
+
+.break-word {
+  display: inline-block;
+  word-wrap: break-word;
+}
+
+.item3 { grid-area: main; }
+.item4 { grid-area: right; }
+
+.grid-container {
+  display: grid;
+  grid-template-areas:
+    'main right';
+  padding: 10px;
+}
+
+.grid-container > div {
+  text-align: center;
+  padding: 0px 0;
+  font-size: 14px;
+}
+
+.center {
+  margin: auto;
 }
 </style>

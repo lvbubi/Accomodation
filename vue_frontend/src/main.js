@@ -8,8 +8,14 @@ import store from './store'
 import Toasted from 'vue-toasted';
 
 import VModal from 'vue-js-modal'
-Vue.use(VModal)
+import 'nx-card/dist/nx-card.css'
+import NxCard from 'nx-card/dist/nx-card.common'
 
+Vue.use(NxCard)
+
+
+
+Vue.use(VModal)
 Vue.config.performance = true
 Vue.use(CoreuiVue)
 Vue.use(Toasted)
