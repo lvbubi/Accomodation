@@ -10,9 +10,6 @@ import View from 'ol/View'
 import Map from 'ol/Map'
 import TileLayer from 'ol/layer/Tile'
 import 'ol/ol.css'
-import * as axios from "axios";
-import {Feature} from "ol";
-import {Point} from "ol/geom";
 import {fromLonLat} from "ol/proj";
 import OSM from "ol/source/OSM";
 import MarkerService from "@/containers/MarkerService";
@@ -51,34 +48,6 @@ export default {
     });
 
     console.log('map loaded')
-
-    //myFeature.setStyle(selected_polygon_style)
-    //this.$store.state.circleLayer.getSource().addFeature(myFeature)
-
-    //{"bubblingMouseEvents": true, "color": "crimson", "dashArray": null,
-    // "dashOffset": null, "fill": true, "fillColor": "crimson", "fillOpacity": 0.2,
-    // "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0,
-    // "radius": 3301, "stroke": true, "weight": 3}
-    /*axios.default.get('http://localhost:5000').then((a) => {
-
-      var result = [];
-
-      for(var i in a.data.coordinate)
-        result.push(a.data.coordinate [i]);
-
-      //console.log(a.data.coordinate)
-      const features = result.map(coordinate => {
-            //console.log(coordinate)
-            return new Feature({
-              geometry: new Point(fromLonLat(coordinate)),
-              style: MarkerService.defaultStyle
-            })
-          }
-      );
-
-      //vectorLayer.getSource().addFeatures(features);
-      console.log(a);
-    });*/
   }
 }
 </script>

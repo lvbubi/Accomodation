@@ -8,7 +8,7 @@ const state = {
   sidebarShow: 'responsive',
   sidebarMinimize: false,
   zoomLevel: 0,
-  chartType: 'correlation',
+  chartType: 'correlation/pearson',
   chartUrl: 'https://www.google.com/logos/doodles/2020/december-holidays-days-2-30-6753651837108830.3-law.gif',
 }
 

@@ -98,10 +98,12 @@ export default {
     onselect: function (event) {
       LayerStore.state.circleLayer.getSource().clear();
 
+      const chartType = event.columnId != null ? "scatter" : this.$store.state.chartType;
+
       const path = [event.root, event.csv, event.columnId].filter(x => x != null).join('/')
 
       if(event.csv != null) {
-        this.$store.state.chartUrl = `http://localhost:5000/${this.$store.state.chartType}/${path}`;
+        this.$store.state.chartUrl = `http://localhost:5000/${chartType}/${path}`;
       }
 
       if(event.columnId != null) {
@@ -111,7 +113,6 @@ export default {
           const features = a.data.map(x => createFeature(x, path))
           LayerStore.state.circleLayer.getSource().addFeatures(features);
         });
-        return;
       }
     },
     oninput: function (event) {

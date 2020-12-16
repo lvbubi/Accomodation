@@ -4,6 +4,7 @@
       :minimize="minimize"
       :show="show"
       :overlaid="!minimize"
+
       @update:show="(value) => $store.commit('set', ['sidebarShow', value])"
   >
     <CSidebarBrand class="d-md-down-none" to="/">
@@ -13,11 +14,13 @@
     <CSidebarNavDropdown name="ASD" :items="dropdown"></CSidebarNavDropdown>
     <DoughnutChart class="square"/>
 
+
     <CSelect
-        label="Chart Type"
-        :options="['scatter', 'correlation']"
+        label="Correlation Type"
+        :options="['correlation/pearson', 'correlation/spearman', 'correlation/kendall']"
         @update:value="(value) => $store.state.chartType = value"
         :value="$store.state.chartType"
+        v-if="$store.getters.selectVisible"
     />
     <img :src="$store.state.chartUrl" class="square">
 
@@ -55,6 +58,11 @@ export default {
     },
     minimize() {
       return this.$store.state.sidebarMinimize
+    }
+  },
+  watch: {
+    '$store.state.chartType': function(state, oldValue) {
+      this.$store.state.chartUrl = this.$store.state.chartUrl.replace(oldValue, state);
     }
   }
 }
