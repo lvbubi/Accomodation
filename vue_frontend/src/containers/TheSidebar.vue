@@ -11,16 +11,13 @@
       <v-img contain src="http://oktatas.mik.uni-pannon.hu/pluginfile.php/1/theme_enlightlite/logo/1604907398/cimer_szines_99_transparent.png" max-height="150px"></v-img>
     </CSidebarBrand>
 
-    <CSidebarNavDropdown name="ASD" :items="dropdown"></CSidebarNavDropdown>
-    <DoughnutChart class="square"/>
-
-
     <CSelect
         label="Correlation Type"
         :options="['correlation/pearson', 'correlation/spearman', 'correlation/kendall']"
         @update:value="(value) => $store.state.chartType = value"
         :value="$store.state.chartType"
         v-if="$store.getters.selectVisible"
+        style="padding-left: 10px; padding-right: 30%;"
     />
     <img :src="$store.state.chartUrl" class="square" @click="$modal.show('size-modal')">
 
